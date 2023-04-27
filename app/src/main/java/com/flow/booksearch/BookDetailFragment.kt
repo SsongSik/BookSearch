@@ -3,15 +3,15 @@ package com.flow.booksearch
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.flow.booksearch.base.BaseFragment
-import com.flow.booksearch.databinding.FragmentSearchBinding
+import com.flow.booksearch.databinding.FragmentBookDetailBinding
 
-class FragmentSearch : BaseFragment<FragmentSearchBinding>()
-{
+class BookDetailFragment : BaseFragment<FragmentBookDetailBinding>() {
+
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentSearchBinding {
-        return FragmentSearchBinding.inflate(inflater, container, false)
+    ): FragmentBookDetailBinding {
+        return FragmentBookDetailBinding.inflate(inflater, container, false)
     }
 
     override fun initView() {
@@ -21,5 +21,4 @@ class FragmentSearch : BaseFragment<FragmentSearchBinding>()
     override fun initListener() {
 
     }
-
 }

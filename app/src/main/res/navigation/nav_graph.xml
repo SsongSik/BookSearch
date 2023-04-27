@@ -7,7 +7,32 @@
 
     <fragment
         android:id="@+id/fragmentSearch"
-        android:name="com.flow.booksearch.FragmentSearch"
+        android:name="com.flow.booksearch.SearchFragment"
         android:label="FragmentSearch"
-        tools:layout="@layout/fragment_search"/>
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_fragmentSearch_to_fragmentBookMark"
+            app:destination="@id/fragmentBookMark" />
+        <action
+            android:id="@+id/action_fragmentSearch_to_fragmentBookDetail"
+            app:destination="@id/fragmentBookDetail" />
+        <action
+            android:id="@+id/action_fragmentSearch_to_fragmentRecentSearch"
+            app:destination="@id/fragmentRecentSearch" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentBookDetail"
+        android:name="com.flow.booksearch.BookDetailFragment"
+        android:label="FragmentBookDetail"
+        tools:layout="@layout/fragment_book_detail"/>
+    <fragment
+        android:id="@+id/fragmentBookMark"
+        android:name="com.flow.booksearch.BookMarkFragment"
+        android:label="FragmentBookMark"
+        tools:layout="@layout/fragment_bookmark"/>
+    <fragment
+        android:id="@+id/fragmentRecentSearch"
+        android:name="com.flow.booksearch.RecentSearchFragment"
+        android:label="FragmentRecentSearch"
+        tools:layout="@layout/fragment_recent_search"/>
 </navigation>
