@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">booksearch</string>
+
+    <string name="search_fragment_text">검색화면</string>
 </resources>
