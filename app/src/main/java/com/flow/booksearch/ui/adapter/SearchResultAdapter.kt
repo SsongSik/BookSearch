@@ -8,12 +8,12 @@ import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.databinding.ItemSearchResultBinding
 
 class SearchResultAdapter(listener: OnBookMarkViewHolderClick) : ListAdapter<Book, SearchResultViewHolder>(BookDiffCallback) {
-    private val mCallback = listener
+    private val clickCallback = listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
         return SearchResultViewHolder(
             ItemSearchResultBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            mCallback
+            clickCallback
         )
     }
 

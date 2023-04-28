@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.flow.booksearch.R
 import com.flow.booksearch.base.BaseFragment
 import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.databinding.FragmentSearchBinding
@@ -61,7 +62,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHold
             searchResultBt.setOnClickListener {
                 val searchKeyword = binding.searchEt.text.toString()
                 if(searchKeyword.isEmpty()) {
-                    Toast.makeText(requireContext(), "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.search_keyword_not_text), Toast.LENGTH_SHORT).show()
                 } else {
                     searchViewModel.getSearchBook(searchKeyword)
                 }
@@ -70,7 +71,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHold
 
         searchViewModel.searchResult.observe(viewLifecycleOwner) {
             if(it.isEmpty()) {
-                Toast.makeText(requireContext(), "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.search_result_not_text), Toast.LENGTH_SHORT).show()
             } else {
                 searchResultAdapter.submitList(it)
             }
