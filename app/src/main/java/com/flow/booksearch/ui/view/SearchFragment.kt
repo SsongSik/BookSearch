@@ -22,6 +22,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     }
 
     override fun initView() {
+
         searchViewModel.getSearchBook("android", 10, 1, "sim")
     }
 
