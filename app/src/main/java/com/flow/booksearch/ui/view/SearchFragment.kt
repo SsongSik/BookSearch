@@ -1,13 +1,19 @@
-package com.flow.booksearch
+package com.flow.booksearch.ui.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.flow.booksearch.base.BaseFragment
 import com.flow.booksearch.databinding.FragmentSearchBinding
+import com.flow.booksearch.ui.viewmodel.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class SearchFragment : BaseFragment<FragmentSearchBinding>()
-{
+@AndroidEntryPoint
+class SearchFragment : BaseFragment<FragmentSearchBinding>() {
+
+    private val searchViewModel by viewModels<SearchViewModel>()
+
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -16,7 +22,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>()
     }
 
     override fun initView() {
-
+        searchViewModel.getSearchBook("android", 10, 1, "sim")
     }
 
     override fun initListener() {
