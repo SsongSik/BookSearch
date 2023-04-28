@@ -1,4 +1,4 @@
-package com.flow.booksearch.ui.adapter
+package com.flow.booksearch.ui.adapter.search
 
 import com.flow.booksearch.data.model.Book
 

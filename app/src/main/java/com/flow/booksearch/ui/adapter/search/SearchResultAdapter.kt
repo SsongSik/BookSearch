@@ -1,4 +1,4 @@
-package com.flow.booksearch.ui.adapter
+package com.flow.booksearch.ui.adapter.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.databinding.ItemSearchResultBinding
 
-class SearchResultAdapter(listener: OnBookMarkViewHolderClick) : ListAdapter<Book, SearchResultViewHolder>(BookDiffCallback) {
+class SearchResultAdapter(listener: OnBookMarkViewHolderClick) : ListAdapter<Book, SearchResultViewHolder>(
+    BookDiffCallback
+) {
     private val clickCallback = listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
