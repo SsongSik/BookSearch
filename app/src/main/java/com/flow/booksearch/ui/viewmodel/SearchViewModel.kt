@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.flow.booksearch.base.BaseViewModel
 import com.flow.booksearch.data.model.Book
+import com.flow.booksearch.data.model.RecentKeyword
 import com.flow.booksearch.data.repository.BookSearchRepository
 import com.flow.booksearch.util.Constant
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -14,6 +16,7 @@ class SearchViewModel @Inject constructor(
     private val bookSearchRepository: BookSearchRepository,
 ) : BaseViewModel() {
 
+    //api
     private val _searchResult = MutableLiveData<List<Book>>()
     val searchResult : LiveData<List<Book>>
         get() = _searchResult
@@ -27,4 +30,12 @@ class SearchViewModel @Inject constructor(
             }
         }
     }
+
+    //db
+    fun insertKeyword(recentKeyword: RecentKeyword) = launch {
+        bookSearchRepository.insertKeyword(recentKeyword)
+    }
+
+    val recentKeyword : Flow<List<RecentKeyword>> = bookSearchRepository.getRecentKeyword()
+
 }

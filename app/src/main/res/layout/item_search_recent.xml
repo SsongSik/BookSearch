@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/search_recent_tv"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:maxLines="2"
@@ -18,14 +18,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="제목" />
-
-    <ImageView
-        android:id="@+id/search_recent_close_iv"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/baseline_close_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

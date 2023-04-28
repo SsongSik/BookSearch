@@ -1,10 +1,14 @@
 package com.flow.booksearch.di
 
+import android.content.Context
+import androidx.room.Room
 import com.flow.booksearch.data.api.BookSearchApi
+import com.flow.booksearch.data.db.BookSearchDatabase
 import com.flow.booksearch.util.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -47,4 +51,14 @@ object AppModule {
             .build()
             .create()
     }
+
+    //Room
+    @Singleton
+    @Provides
+    fun provideBookSearchDatabase(@ApplicationContext context: Context): BookSearchDatabase =
+        Room.databaseBuilder(
+            context.applicationContext,
+            BookSearchDatabase::class.java,
+            "book_search"
+        ).build()
 }

@@ -1,18 +1,19 @@
 package com.flow.booksearch.ui.view
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flow.booksearch.R
 import com.flow.booksearch.base.BaseFragment
 import com.flow.booksearch.data.model.Book
+import com.flow.booksearch.data.model.RecentKeyword
 import com.flow.booksearch.databinding.FragmentSearchBinding
-import com.flow.booksearch.ui.adapter.OnBookMarkViewHolderClick
-import com.flow.booksearch.ui.adapter.SearchResultAdapter
+import com.flow.booksearch.ui.adapter.search.OnBookMarkViewHolderClick
+import com.flow.booksearch.ui.adapter.search.SearchResultAdapter
 import com.flow.booksearch.ui.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +23,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHold
     private val searchViewModel by viewModels<SearchViewModel>()
 
     private lateinit var searchResultAdapter : SearchResultAdapter
+    private val args : SearchFragmentArgs by navArgs<SearchFragmentArgs>()
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -31,19 +33,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHold
     }
 
     override fun initView() {
+        initArgsSetting()
         setUpRecyclerView()
     }
 
-    private fun setUpRecyclerView() {
-        searchResultAdapter = SearchResultAdapter(this)
-        binding.searchResultRv.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = searchResultAdapter
-        }
-
-        searchResultAdapter.setOnItemClickListener {
-            val action  = SearchFragmentDirections.actionFragmentSearchToFragmentBookDetail(it)
-            findNavController().navigate(action)
+    private fun initArgsSetting() {
+        if(args.keyword != " ") {
+            searchViewModel.getSearchBook(args.keyword)
+            binding.searchEt.setText(args.keyword)
         }
     }
 
@@ -64,6 +61,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHold
                 if(searchKeyword.isEmpty()) {
                     Toast.makeText(requireContext(), getString(R.string.search_keyword_not_text), Toast.LENGTH_SHORT).show()
                 } else {
+                    searchViewModel.insertKeyword(
+                        recentKeyword =
+                        RecentKeyword(
+                            index = 0,
+                            keyword = searchKeyword
+                        )
+                    )
                     searchViewModel.getSearchBook(searchKeyword)
                 }
             }
@@ -75,6 +79,19 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHold
             } else {
                 searchResultAdapter.submitList(it)
             }
+        }
+    }
+
+    private fun setUpRecyclerView() {
+        searchResultAdapter = SearchResultAdapter(this)
+        binding.searchResultRv.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            adapter = searchResultAdapter
+        }
+
+        searchResultAdapter.setOnItemClickListener {
+            val action  = SearchFragmentDirections.actionFragmentSearchToFragmentBookDetail(it)
+            findNavController().navigate(action)
         }
     }
 

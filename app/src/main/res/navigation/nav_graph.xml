@@ -19,6 +19,10 @@
         <action
             android:id="@+id/action_fragmentSearch_to_fragmentRecentSearch"
             app:destination="@id/fragmentRecentSearch" />
+        <argument
+            android:name="keyword"
+            app:argType="string"
+            android:defaultValue=" " />
     </fragment>
     <fragment
         android:id="@+id/fragmentBookDetail"
@@ -38,5 +42,9 @@
         android:id="@+id/fragmentRecentSearch"
         android:name="com.flow.booksearch.ui.view.RecentSearchFragment"
         android:label="FragmentRecentSearch"
-        tools:layout="@layout/fragment_recent_search"/>
+        tools:layout="@layout/fragment_recent_search">
+        <action
+            android:id="@+id/action_fragmentRecentSearch_to_fragmentSearch"
+            app:destination="@id/fragmentSearch" />
+    </fragment>
 </navigation>
