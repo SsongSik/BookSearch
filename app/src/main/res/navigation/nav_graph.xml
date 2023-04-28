@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentSearch"
-        android:name="com.flow.booksearch.SearchFragment"
+        android:name="com.flow.booksearch.ui.view.SearchFragment"
         android:label="FragmentSearch"
         tools:layout="@layout/fragment_search">
         <action
@@ -22,17 +22,21 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentBookDetail"
-        android:name="com.flow.booksearch.BookDetailFragment"
+        android:name="com.flow.booksearch.ui.view.BookDetailFragment"
         android:label="FragmentBookDetail"
-        tools:layout="@layout/fragment_book_detail"/>
+        tools:layout="@layout/fragment_book_detail">
+        <argument
+            android:name="book"
+            app:argType="com.flow.booksearch.data.model.Book" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentBookMark"
-        android:name="com.flow.booksearch.BookMarkFragment"
+        android:name="com.flow.booksearch.ui.view.BookMarkFragment"
         android:label="FragmentBookMark"
         tools:layout="@layout/fragment_bookmark"/>
     <fragment
         android:id="@+id/fragmentRecentSearch"
-        android:name="com.flow.booksearch.RecentSearchFragment"
+        android:name="com.flow.booksearch.ui.view.RecentSearchFragment"
         android:label="FragmentRecentSearch"
         tools:layout="@layout/fragment_recent_search"/>
 </navigation>

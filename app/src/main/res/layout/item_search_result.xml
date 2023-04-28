@@ -15,6 +15,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/search_result_star_iv"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginBottom="-10dp"
+        android:src="@drawable/baseline_star_24"
+        app:layout_constraintBottom_toBottomOf="@id/search_result_iv"
+        app:layout_constraintEnd_toEndOf="@+id/search_result_iv" />
+
     <TextView
         android:id="@+id/search_result_tv"
         android:layout_width="0dp"
