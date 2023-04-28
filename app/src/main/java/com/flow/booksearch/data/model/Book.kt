@@ -15,7 +15,6 @@ data class Book(
     val link: String,
     val image: String,
     val author: String,
-    val price: Int,
     val discount: Int,
     val publisher: String,
     val pubdate: String,
