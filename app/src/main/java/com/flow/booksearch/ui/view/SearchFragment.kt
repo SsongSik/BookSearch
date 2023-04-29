@@ -15,6 +15,8 @@ import com.flow.booksearch.databinding.FragmentSearchBinding
 import com.flow.booksearch.ui.adapter.search.BookMarkAddDeleteClick
 import com.flow.booksearch.ui.adapter.search.SearchResultAdapter
 import com.flow.booksearch.ui.viewmodel.SearchViewModel
+import com.flow.booksearch.util.observeError
+import com.flow.booksearch.util.observeLoading
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -45,6 +47,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
     }
 
     override fun initListener() {
+        observeLoading(searchViewModel, binding.progressBar)
+        observeError(searchViewModel)
+
         with(binding) {
             searchTopBookmarkTv.setOnClickListener {
                 val action = SearchFragmentDirections.actionFragmentSearchToFragmentBookMark()
