@@ -6,14 +6,12 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flow.booksearch.R
 import com.flow.booksearch.base.BaseFragment
 import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.databinding.FragmentBookmarkBinding
-import com.flow.booksearch.ui.adapter.keyword.RecentKeywordAdapter
-import com.flow.booksearch.ui.adapter.search.OnBookMarkViewHolderClick
+import com.flow.booksearch.ui.adapter.search.BookMarkAddDeleteClick
 import com.flow.booksearch.ui.adapter.search.SearchResultAdapter
 import com.flow.booksearch.ui.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BookMarkFragment : BaseFragment<FragmentBookmarkBinding>(), OnBookMarkViewHolderClick {
+class BookMarkFragment : BaseFragment<FragmentBookmarkBinding>(), BookMarkAddDeleteClick {
 
     private val searchViewModel by viewModels<SearchViewModel>()
 

@@ -4,12 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.data.model.RecentKeyword
 import com.flow.booksearch.databinding.ItemSearchRecentBinding
-import com.flow.booksearch.databinding.ItemSearchResultBinding
-import com.flow.booksearch.ui.adapter.search.OnBookMarkViewHolderClick
-import com.flow.booksearch.ui.adapter.search.SearchResultViewHolder
 
 class RecentKeywordAdapter() : ListAdapter<RecentKeyword, RecentKeywordViewHolder>(
     BookDiffCallback

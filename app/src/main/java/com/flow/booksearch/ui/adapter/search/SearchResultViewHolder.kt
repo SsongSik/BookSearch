@@ -1,9 +1,5 @@
 package com.flow.booksearch.ui.adapter.search
 
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
-import android.util.Log
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
@@ -13,7 +9,7 @@ import com.flow.booksearch.databinding.ItemSearchResultBinding
 
 class SearchResultViewHolder(
     private val binding: ItemSearchResultBinding,
-    private val clickCallback: OnBookMarkViewHolderClick,
+    private val clickCallback: BookMarkAddDeleteClick,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private var isBookmarked = false
@@ -52,7 +48,6 @@ class SearchResultViewHolder(
                 if (isBookmarked) {
                     clickCallback.clickBookMark(book)
                 } else {
-                    Log.d("gg1234", "삭제")
                     clickCallback.clickDeleteBookMark(book)
                 }
             }

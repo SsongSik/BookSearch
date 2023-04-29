@@ -8,7 +8,7 @@ import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.databinding.ItemSearchResultBinding
 
 class SearchResultAdapter(
-    listener: OnBookMarkViewHolderClick,
+    listener: BookMarkAddDeleteClick,
     private val isBookmarkedInitially: Boolean = false
 ) : ListAdapter<Book, SearchResultViewHolder>(
     BookDiffCallback
