@@ -9,7 +9,7 @@ interface BookMarkDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBook(book : Book)
 
-    @Query("SELECT * FROM books")
+    @Query("SELECT * FROM books ORDER BY timestamp DESC LIMIT 10")
     fun getFavoriteBooks() : Flow<List<Book>>
 
     @Delete

@@ -97,7 +97,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHold
 
     override fun clickBookMark(book: Book) {
         Toast.makeText(requireContext(), getString(R.string.bookmark_text), Toast.LENGTH_SHORT).show()
-        searchViewModel.insertBookMark(book)
+        searchViewModel.insertBookMark(book.copy(timestamp = System.currentTimeMillis()))
     }
 
     override fun clickDeleteBookMark(book: Book) {
