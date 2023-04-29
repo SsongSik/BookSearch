@@ -11,6 +11,7 @@ import com.flow.booksearch.base.BaseFragment
 import com.flow.booksearch.databinding.FragmentRecentSearchBinding
 import com.flow.booksearch.ui.adapter.keyword.RecentKeywordAdapter
 import com.flow.booksearch.ui.viewmodel.SearchViewModel
+import com.flow.booksearch.util.observeError
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
