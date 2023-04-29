@@ -3,6 +3,7 @@ package com.flow.booksearch.data.repository
 import androidx.lifecycle.LiveData
 import com.flow.booksearch.data.api.BookSearchApi
 import com.flow.booksearch.data.db.BookSearchDatabase
+import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.data.model.RecentKeyword
 import com.flow.booksearch.data.model.SearchResponse
 import kotlinx.coroutines.flow.Flow
@@ -30,5 +31,17 @@ class BookSearchRepositoryImpl  @Inject constructor(
 
     override fun getRecentKeyword(): Flow<List<RecentKeyword>> {
         return db.keywordDao().getRecentKeyword()
+    }
+
+    override suspend fun insertBookMark(book: Book) {
+        db.bookMarkDao().insertBook(book)
+    }
+
+    override fun getBookMarks(): Flow<List<Book>> {
+        return db.bookMarkDao().getFavoriteBooks()
+    }
+
+    override suspend fun deleteBookMark(book: Book) {
+        db.bookMarkDao().deleteBook(book)
     }
 }

@@ -37,7 +37,11 @@
         android:id="@+id/fragmentBookMark"
         android:name="com.flow.booksearch.ui.view.BookMarkFragment"
         android:label="FragmentBookMark"
-        tools:layout="@layout/fragment_bookmark"/>
+        tools:layout="@layout/fragment_bookmark">
+        <action
+            android:id="@+id/action_fragmentBookMark_to_fragmentBookDetail"
+            app:destination="@id/fragmentBookDetail" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentRecentSearch"
         android:name="com.flow.booksearch.ui.view.RecentSearchFragment"

@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.databinding.ItemSearchResultBinding
 
-class SearchResultAdapter(listener: OnBookMarkViewHolderClick) : ListAdapter<Book, SearchResultViewHolder>(
+class SearchResultAdapter(
+    listener: OnBookMarkViewHolderClick,
+    private val isBookmarkedInitially: Boolean = false
+) : ListAdapter<Book, SearchResultViewHolder>(
     BookDiffCallback
 ) {
     private val clickCallback = listener
@@ -21,15 +24,15 @@ class SearchResultAdapter(listener: OnBookMarkViewHolderClick) : ListAdapter<Boo
 
     override fun onBindViewHolder(holder: SearchResultViewHolder, position: Int) {
         val book = currentList[position]
-        holder.bind(book)
+        holder.bind(book, isBookmarkedInitially)
         holder.itemView.setOnClickListener {
-            onItemClickListener?.let{ it(book) }
+            onItemClickListener?.let { it(book) }
         }
     }
 
-    private var onItemClickListener : ((Book) -> Unit)? = null
+    private var onItemClickListener: ((Book) -> Unit)? = null
 
-    fun setOnItemClickListener(listener : (Book) -> Unit){
+    fun setOnItemClickListener(listener: (Book) -> Unit) {
         onItemClickListener = listener
     }
 
