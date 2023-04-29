@@ -13,5 +13,6 @@ import com.flow.booksearch.data.model.RecentKeyword
 abstract class BookSearchDatabase : RoomDatabase(){
 
     abstract fun keywordDao() : KeywordDao
-    abstract fun bookMark() : BookMarkDao
+
+    abstract fun bookMarkDao() : BookMarkDao
 }

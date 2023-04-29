@@ -1,6 +1,7 @@
 package com.flow.booksearch.data.repository
 
 import androidx.lifecycle.LiveData
+import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.data.model.RecentKeyword
 import com.flow.booksearch.data.model.SearchResponse
 import kotlinx.coroutines.flow.Flow
@@ -20,4 +21,10 @@ interface BookSearchRepository {
     suspend fun insertKeyword(recentKeyword: RecentKeyword)
 
     fun getRecentKeyword() : Flow<List<RecentKeyword>>
+
+    suspend fun insertBookMark(book : Book)
+
+    fun getBookMarks() : Flow<List<Book>>
+
+    suspend fun deleteBookMark(book : Book)
 }

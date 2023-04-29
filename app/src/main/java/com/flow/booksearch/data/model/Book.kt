@@ -21,4 +21,5 @@ data class Book(
     @PrimaryKey(autoGenerate = false)
     val isbn: String,
     val description: String,
+    val timestamp: Long
 ) : Parcelable

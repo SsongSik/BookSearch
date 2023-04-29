@@ -2,6 +2,8 @@ package com.flow.booksearch.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.flow.booksearch.data.api.BookSearchApi
 import com.flow.booksearch.data.db.BookSearchDatabase
 import com.flow.booksearch.util.Constant

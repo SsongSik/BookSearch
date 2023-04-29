@@ -38,4 +38,14 @@ class SearchViewModel @Inject constructor(
 
     val recentKeyword : Flow<List<RecentKeyword>> = bookSearchRepository.getRecentKeyword()
 
+    fun insertBookMark(book : Book) = launch {
+        bookSearchRepository.insertBookMark(book)
+    }
+
+    val bookMark : Flow<List<Book>> = bookSearchRepository.getBookMarks()
+
+    fun deleteBookMark(book : Book) = launch {
+        bookSearchRepository.deleteBookMark(book)
+    }
+
 }

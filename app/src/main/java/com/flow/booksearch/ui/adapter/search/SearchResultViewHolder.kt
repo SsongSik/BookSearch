@@ -1,16 +1,22 @@
 package com.flow.booksearch.ui.adapter.search
 
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
+import com.flow.booksearch.R
 import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.databinding.ItemSearchResultBinding
 
 class SearchResultViewHolder(
     private val binding: ItemSearchResultBinding,
-    private val clickCallback: OnBookMarkViewHolderClick,
+    private val clickCallback: BookMarkAddDeleteClick,
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(book : Book) {
+    private var isBookmarked = false
+
+    fun bind(book: Book, isBookmarkedInit: Boolean = false) {
+        isBookmarked = isBookmarkedInit
+
         val title = "제목: ${book.title}"
         val author = "저자: ${book.author}"
         val publisher = "출판사: ${book.publisher}"
@@ -23,8 +29,27 @@ class SearchResultViewHolder(
             searchResultPriceTv.text = discount
             searchResultIv.load(book.image)
 
+            searchResultStarIv.setColorFilter(
+                ContextCompat.getColor(
+                    itemView.context,
+                    if (isBookmarked) R.color.yellow_FFFF00 else android.R.color.black
+                )
+            )
+
             searchResultStarIv.setOnClickListener {
-                clickCallback.clickBookMark(book)
+                isBookmarked = !isBookmarked
+                searchResultStarIv.setColorFilter(
+                    ContextCompat.getColor(
+                        itemView.context,
+                        if (isBookmarked) R.color.yellow_FFFF00 else android.R.color.black
+                    )
+                )
+
+                if (isBookmarked) {
+                    clickCallback.clickBookMark(book)
+                } else {
+                    clickCallback.clickDeleteBookMark(book)
+                }
             }
         }
     }

@@ -12,13 +12,13 @@ import com.flow.booksearch.base.BaseFragment
 import com.flow.booksearch.data.model.Book
 import com.flow.booksearch.data.model.RecentKeyword
 import com.flow.booksearch.databinding.FragmentSearchBinding
-import com.flow.booksearch.ui.adapter.search.OnBookMarkViewHolderClick
+import com.flow.booksearch.ui.adapter.search.BookMarkAddDeleteClick
 import com.flow.booksearch.ui.adapter.search.SearchResultAdapter
 import com.flow.booksearch.ui.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHolderClick {
+class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteClick {
 
     private val searchViewModel by viewModels<SearchViewModel>()
 
@@ -57,7 +57,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHold
             }
 
             searchResultBt.setOnClickListener {
-                val searchKeyword = binding.searchEt.text.toString()
+                val searchKeyword = binding.searchEt.text.trim().toString()
                 if(searchKeyword.isEmpty()) {
                     Toast.makeText(requireContext(), getString(R.string.search_keyword_not_text), Toast.LENGTH_SHORT).show()
                 } else {
@@ -96,7 +96,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnBookMarkViewHold
     }
 
     override fun clickBookMark(book: Book) {
-        //Room 저장
+        Toast.makeText(requireContext(), getString(R.string.bookmark_text), Toast.LENGTH_SHORT).show()
+        searchViewModel.insertBookMark(book.copy(timestamp = System.currentTimeMillis()))
+    }
+
+    override fun clickDeleteBookMark(book: Book) {
+        Toast.makeText(requireContext(), getString(R.string.bookmark_delete_text), Toast.LENGTH_SHORT).show()
+        searchViewModel.deleteBookMark(book)
     }
 
 }
