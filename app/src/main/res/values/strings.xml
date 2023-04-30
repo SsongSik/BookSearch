@@ -19,4 +19,6 @@
     <string name="error_http_exception_text">402 에러가 발생하였습니다.</string>
     <string name="error_unknown_host_exception_text">403 에러가 발생하였습니다.</string>
     <string name="error_coroutine_exception_text">400 에러가 발생하였습니다.</string>
+
+    <string name="back_button_warning">"'뒤로'버튼을 한번 더 누르시면 종료됩니다."</string>
 </resources>

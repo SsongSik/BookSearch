@@ -1,8 +1,10 @@
 package com.flow.booksearch.ui.view
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,6 +19,7 @@ import com.flow.booksearch.ui.adapter.search.SearchResultAdapter
 import com.flow.booksearch.ui.viewmodel.SearchViewModel
 import com.flow.booksearch.util.observeError
 import com.flow.booksearch.util.observeLoading
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,6 +29,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
 
     private lateinit var searchResultAdapter : SearchResultAdapter
     private val args : SearchFragmentArgs by navArgs<SearchFragmentArgs>()
+
+    private var backKeyPressTime = 0L
+
+    private var backStackStatus : Boolean = false
+    private lateinit var searchKeyword : String
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -40,7 +48,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
     }
 
     private fun initArgsSetting() {
-        if(args.keyword != " ") {
+        if(backStackStatus) {
+            searchViewModel.getSearchBook(searchKeyword)
+        }
+        else if(args.keyword != " ") {
             searchViewModel.getSearchBook(args.keyword)
             binding.searchEt.setText(args.keyword)
         }
@@ -49,6 +60,20 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
     override fun initListener() {
         observeLoading(searchViewModel, binding.progressBar)
         observeError(searchViewModel)
+
+        settingBackPressedCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (System.currentTimeMillis() > backKeyPressTime + 2000) {
+                    backKeyPressTime = System.currentTimeMillis()
+                    Snackbar.make(
+                        binding.searchFragment, getString(R.string.back_button_warning), Snackbar.LENGTH_SHORT
+                    ).show()
+
+                } else if (System.currentTimeMillis() <= backKeyPressTime + 2000) {
+                    activity?.finish()
+                }
+            }
+        })
 
         with(binding) {
             searchTopBookmarkTv.setOnClickListener {
@@ -62,7 +87,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
             }
 
             searchResultBt.setOnClickListener {
-                val searchKeyword = binding.searchEt.text.trim().toString()
+                searchKeyword = binding.searchEt.text.trim().toString()
                 if(searchKeyword.isEmpty()) {
                     Toast.makeText(requireContext(), getString(R.string.search_keyword_not_text), Toast.LENGTH_SHORT).show()
                 } else {
@@ -72,6 +97,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
                             keyword = searchKeyword
                         )
                     )
+                    backStackStatus = true
                     searchViewModel.getSearchBook(searchKeyword)
                 }
             }
@@ -108,5 +134,4 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
         Toast.makeText(requireContext(), getString(R.string.bookmark_delete_text), Toast.LENGTH_SHORT).show()
         searchViewModel.deleteBookMark(book)
     }
-
 }
