@@ -29,10 +29,11 @@
 <img src="https://user-images.githubusercontent.com/83231344/235337111-26780afd-5e5f-4948-9372-be057d88223a.png" width="18%" height="30%">
 </p>
 
-## 📌 Wiki
-
 ## 📌 App Architecture
 ![스크린샷 2023-04-13 오전 9 50 09](https://user-images.githubusercontent.com/83231344/231617438-0c5375d9-03dd-4b52-b97d-e8c0d83b339b.png)
+
+## 📌 Project Structure
+<img width="228" alt="스크린샷 2023-05-01 오전 2 46 34" src="https://user-images.githubusercontent.com/83231344/235368205-d7548300-2f8c-42d4-985c-462bd55a7dbe.png">
 
 ## 📌 기술 스택(Tech Skill)
  | Category                                                   | Stack                                                   |
