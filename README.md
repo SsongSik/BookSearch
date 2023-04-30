@@ -9,39 +9,27 @@
 
 ## 📌 Screen Shot
 <p align="center">
-<img src="https://user-images.githubusercontent.com/83231344/224467941-e221991d-b2f4-47a1-a78b-9de11878a8ac.png" width="18%" height="30%">
-<img src="https://user-images.githubusercontent.com/83231344/224467946-90a93ae6-9e9b-48c0-abb2-998e73cd257b.png" width="18%" height="30%">
-<img src="https://user-images.githubusercontent.com/83231344/224467948-fd4ad661-f7e0-434e-9f9b-20b9ba8bd25b.png" width="18%" height="30%">
-<img src="https://user-images.githubusercontent.com/83231344/224467953-62daf11d-cb3c-484d-8411-e67c3bf8951d.png" width="18%" height="30%">
-<img src="https://user-images.githubusercontent.com/83231344/224467960-f747fb78-9b05-4c82-b831-3a2c15297a1e.png" width="18%" height="30%">
+<img src="https://user-images.githubusercontent.com/83231344/235337087-8966fe7b-dfac-48c4-b42b-9289e6d3def1.png" width="18%" height="30%">
+<img src="https://user-images.githubusercontent.com/83231344/235337097-e22315e2-db40-4502-a089-3606dc6d738d.png" width="18%" height="30%">
+<img src="https://user-images.githubusercontent.com/83231344/235337104-32e0a404-152c-4397-a9a9-96d26e3ab3ad.png" width="18%" height="30%">
+<img src="https://user-images.githubusercontent.com/83231344/235337107-5f1a78ba-1d84-4636-9e38-42dad9cc3afa.png" width="18%" height="30%">
+<img src="https://user-images.githubusercontent.com/83231344/235337111-26780afd-5e5f-4948-9372-be057d88223a.png" width="18%" height="30%">
 </p>
 
-## 📌 Wiki(명식이 Android 팀의 기록)
-[[Architecture] Clean Architecture 도입의 고민](https://github.com/MYONGSIK/Android/wiki/%5BArchitecture%5D-Clean-Architecture-%EB%8F%84%EC%9E%85%EC%9D%98-%EA%B3%A0%EB%AF%BC)
+
+## 📌 Wiki
 
 ## 📌 App Architecture
 ![스크린샷 2023-04-13 오전 9 50 09](https://user-images.githubusercontent.com/83231344/231617438-0c5375d9-03dd-4b52-b97d-e8c0d83b339b.png)
-
-
-## 📌 History
-
-✔️ <b>2022년 10월 24일 Ver.1 (인문캠퍼스 식단제공 및 평가기능)</b><br>
-✔️ <b>2022년 11월 7일 Ver.2 (주변 식당 검색 및 추천, 찜꽁리스트기능)</b><br>
-✔️ <b>2023년 3월 6일 Ver.3 (자연캠퍼스 식당 4곳 추가, 리뷰기능)</b><br>
-✔️ <b>2023년 3월 27일 Ver.4 (홈화면 개편, 식당 찜꽁리스트 순위 기능 개발, 크래시대응)</b><br>
-✔️ <b>2023년 4월 24일 Ver.5 (거리순, 랭킹순 식당조회, 맛집 지도, 위젯으로 식단 조회 기능 개발, 크래시대응)</b><br>
-✔️ <b>기능 추가 및 유지보수 예정</b><br>
 
 ## 📌 기술 스택(Tech Skill)
  | Category                                                   | Stack                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------- |
 | **Architecture**| MVVM        |
-| **Android Jetpack**|  ViewModel, LiveData, Navigation, Room, Paging, View Binding, ViewPager2 |
+| **Android Jetpack**|  ViewModel, LiveData, Navigation, Room, View Binding |
 | **Dependency Injection**| Hilt       |
 | **Networking** | Retrofit2, OkHttp3           |
 | **Asynchronous**                 | Coroutine, Flow, StateFlow |
-| **Local DB**                 | Room, DataStore |
-| **Background**                 | AlarmManager, WorkManager |
-| **Firebase**                 | Crashlytics |
+| **Local DB**                 | Room |
 
 
