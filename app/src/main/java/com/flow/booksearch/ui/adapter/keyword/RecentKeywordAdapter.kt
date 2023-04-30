@@ -33,7 +33,7 @@ class RecentKeywordAdapter : ListAdapter<RecentKeyword, RecentKeywordViewHolder>
     companion object {
         private val BookDiffCallback = object : DiffUtil.ItemCallback<RecentKeyword>() {
             override fun areItemsTheSame(oldItem: RecentKeyword, newItem: RecentKeyword): Boolean {
-                return oldItem.index == newItem.index
+                return oldItem.keyword == newItem.keyword
             }
 
             override fun areContentsTheSame(oldItem: RecentKeyword, newItem: RecentKeyword): Boolean {

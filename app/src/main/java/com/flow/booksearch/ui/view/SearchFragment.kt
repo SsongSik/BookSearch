@@ -69,7 +69,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
                     searchViewModel.insertKeyword(
                         recentKeyword =
                         RecentKeyword(
-                            index = 0,
                             keyword = searchKeyword
                         )
                     )
