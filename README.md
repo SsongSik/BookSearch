@@ -14,6 +14,11 @@
 <b>4.</b> 작업이 완료가 되었으면 PR을 요청합니다.<br>
 <b>5.</b> PR확인 후 꼼꼼히 살펴본뒤 자체 코드리뷰를 진행합니다.<br>
 <b>6.</b> PR까지 완료가 되면 main에 병합한 뒤 테스트가 끝나면 생성했던 브랜치를 삭제합니다.<br>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/83231344/235337550-c65ab939-47fb-4f82-a7a5-d580e842564a.png" width="30%" height="30%">
+<img src="https://user-images.githubusercontent.com/83231344/235337552-27c899ab-0e0d-4c10-9477-34b3f7f69c03.png" width="30%" height="30%">
+<img src="https://user-images.githubusercontent.com/83231344/235337554-05fa83f4-81d1-483f-b669-43ba92593469.png" width="30%" height="30%">
+</p>
 
 ## 📌 Screen Shot
 <p align="center">
