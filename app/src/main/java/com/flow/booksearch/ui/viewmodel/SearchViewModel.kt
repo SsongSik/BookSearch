@@ -47,5 +47,4 @@ class SearchViewModel @Inject constructor(
     fun deleteBookMark(book : Book) = launch {
         bookSearchRepository.deleteBookMark(book)
     }
-
 }
