@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.flow.booksearch.data.model.RecentKeyword
 import com.flow.booksearch.databinding.ItemSearchRecentBinding
 
-class RecentKeywordAdapter() : ListAdapter<RecentKeyword, RecentKeywordViewHolder>(
+class RecentKeywordAdapter : ListAdapter<RecentKeyword, RecentKeywordViewHolder>(
     BookDiffCallback
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentKeywordViewHolder {
@@ -24,18 +24,16 @@ class RecentKeywordAdapter() : ListAdapter<RecentKeyword, RecentKeywordViewHolde
         }
     }
 
-
     private var onItemClickListener : ((String) -> Unit)? = null
 
     fun setOnItemClickListener(listener : (String) -> Unit){
         onItemClickListener = listener
     }
 
-
     companion object {
         private val BookDiffCallback = object : DiffUtil.ItemCallback<RecentKeyword>() {
             override fun areItemsTheSame(oldItem: RecentKeyword, newItem: RecentKeyword): Boolean {
-                return oldItem.index == newItem.index
+                return oldItem.keyword == newItem.keyword
             }
 
             override fun areContentsTheSame(oldItem: RecentKeyword, newItem: RecentKeyword): Boolean {
