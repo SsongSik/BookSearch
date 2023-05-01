@@ -20,6 +20,9 @@
 <img src="https://user-images.githubusercontent.com/83231344/235337554-05fa83f4-81d1-483f-b669-43ba92593469.png" width="30%" height="30%">
 </p>
 
+## 📌 실행영상
+https://www.youtube.com/shorts/sVZ4CXhaAaI
+
 ## 📌 Screen Shot
 <p align="center">
 <img src="https://user-images.githubusercontent.com/83231344/235337087-8966fe7b-dfac-48c4-b42b-9289e6d3def1.png" width="18%" height="30%">
