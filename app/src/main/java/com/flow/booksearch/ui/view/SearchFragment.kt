@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.flow.booksearch.R
 import com.flow.booksearch.base.BaseFragment
 import com.flow.booksearch.data.model.Book
@@ -104,7 +105,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
         }
 
         searchViewModel.searchResult.observe(viewLifecycleOwner) {
-            if(it.isEmpty()) {
+            if(it.isEmpty() && !searchViewModel.isFirstPage) {
                 Toast.makeText(requireContext(), getString(R.string.search_result_not_text), Toast.LENGTH_SHORT).show()
             } else {
                 searchResultAdapter.submitList(it)
@@ -117,6 +118,20 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
         binding.searchResultRv.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = searchResultAdapter
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                    val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
+
+                    if (lastVisibleItemPosition == searchResultAdapter.itemCount - 1) {
+                        val searchKeyword = binding.searchEt.text.trim().toString()
+                        searchViewModel.getSearchBook(searchKeyword)
+                    }
+                }
+            })
         }
 
         searchResultAdapter.setOnItemClickListener {
