@@ -101,7 +101,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), BookMarkAddDeleteC
                     val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                     val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
 
-                    //Todo 추가 조건 필요할 수 있음
                     if (lastVisibleItemPosition == searchResultAdapter.itemCount - 1) {
                         val searchKeyword = binding.searchEt.text.trim().toString()
                         searchViewModel.getSearchBook(searchKeyword)

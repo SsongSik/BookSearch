@@ -24,9 +24,6 @@ class SearchViewModel @Inject constructor(
     val searchResult : LiveData<List<Book>>
         get() = _searchResult
 
-//    private val _isFetching = MutableStateFlow(false)
-//    val isFetching: StateFlow<Boolean> = _isFetching
-
     private var currentPage = 1
     private val itemsPerPage = 10
 
